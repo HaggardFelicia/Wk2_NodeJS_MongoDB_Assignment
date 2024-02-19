@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
     res.status(200).json({ message: `${req.method} - request made`, success: true});
 });
 
-router.use('/directors', directorRoutes);
-router.use('/movies', movieRoutes);
+router.use('/directors', directorRoutes,'/movies', movieRoutes);
+//router.use('/movies', movieRoutes);
 
 module.exports = router;

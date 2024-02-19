@@ -9,14 +9,15 @@ const getAllDirectors = async (req, res) => {
     });
 };
 
-const getDirectorById = (req, res) => {
+const getDirectorById = async (req, res) => {
     const {id} = req.params;
+    const director = await Directors.findById(id);
     res.status(200).json({ 
-        id,
+        data: director,
         message: `${req.method} - request to Director endpoint`, 
         success: true
     });
-};
+}
 
 const createDirector = async (req, res) => {
     const {director} = req.body;
@@ -51,14 +52,15 @@ const updateDirector = async (req, res) => {
     });
 };
 
-const deleteDirector = (req, res) => {
+const deleteDirector = async (req, res) => {
     const {id} = req.params;
+    const director = await Directors.findByIdAndDelete(id, req.body, { new: false });
     res.status(200).json({ 
         id,
-        message: `${req.method} - request to director endpoint`, 
+        message: `${req.method} - request to Director endpoint`, 
         success: true
     });
-};
+}
 
 module.exports = {
     getAllDirectors,

@@ -9,14 +9,15 @@ const getAllMovies = async (req, res) => {
     });
 };
 
-const getMovieById = (req, res) => {
+const getMovieById = async (req, res) => {
     const {id} = req.params;
+    const movie = await Movies.findById(id);
     res.status(200).json({ 
-        id,
+        data: movie,
         message: `${req.method} - request to Movie endpoint`, 
         success: true
     });
-};
+}
 
 const createMovie = async (req, res) => {
     const {movie} = req.body;
@@ -51,14 +52,15 @@ const updateMovie = async (req, res) => {
     });
 };
 
-const deleteMovie = (req, res) => {
+const deleteMovie = async (req, res) => {
     const {id} = req.params;
+    const movie = await Movies.findByIdAndDelete(id, req.body, { new: false });
     res.status(200).json({ 
         id,
-        message: `${req.method} - request to movie endpoint`, 
+        message: `${req.method} - request to Movie endpoint`, 
         success: true
     });
-};
+}
 
 module.exports = {
     getAllMovies,
