@@ -22,7 +22,7 @@ const getMovieById = async (req, res) => {
 const createMovie = async (req, res) => {
     const {movie} = req.body;
     try{
-        const newMovie = await Movies.create(director);
+        const newMovie = await Movies.create(movie);
         console.log('data >>>', newMovie);
         res.status(200).json({ 
             message: `${req.method} - request to Movie endpoint`, 

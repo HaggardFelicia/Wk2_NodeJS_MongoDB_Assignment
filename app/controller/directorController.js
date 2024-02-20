@@ -25,6 +25,7 @@ const createDirector = async (req, res) => {
         const newDirector = await Directors.create(director);
         console.log('data >>>', newDirector);
         res.status(200).json({ 
+            data: newDirector,
             message: `${req.method} - request to Director endpoint`, 
             success: true
         });

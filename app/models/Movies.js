@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const movieSchema = new mongoose.Schema(
+const moviesSchema = new mongoose.Schema(
     {
         title: {
             type: String,
@@ -14,6 +14,7 @@ const movieSchema = new mongoose.Schema(
             enum: [
                 "Action",
                 "Adventure",
+                "Crime",
                 "Comedy",
                 "Drama",
                 "Horror",
@@ -24,7 +25,7 @@ const movieSchema = new mongoose.Schema(
             ],
         },
         director:{
-            type: mongoose.Schema.Types.ObjectId,
+            type: String,
             ref: 'Director',
             required: [true, 'You are required to have a director'],
         },
@@ -38,4 +39,4 @@ const movieSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model('Movie', movieSchema);
+module.exports = mongoose.model('Movie', moviesSchema);
