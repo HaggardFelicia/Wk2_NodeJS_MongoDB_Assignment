@@ -92,28 +92,6 @@ const updateMovie = async (req, res) => {
             console.error(error);
             res.status(500).json(error);
         }
-};
-
-const deleteMovie = async (req, res) => {
-    const {id} = req.params;
-    try{
-        const movie = await Movies.findByIdAndDelete(id, req.body, { new: false });
-        res.status(200).json({ 
-            id,
-            message: `${req.method} - request to Movie endpoint`, 
-            success: true
-        });
-    }
-    catch(error){
-        if (error.name === 'ValidationError') {
-            console.error('Error Validating!', error);
-            res.status(422).json(error);
-        }
-        else{
-            console.error(error);
-            res.status(500).json(error);
-        }
-    }
     }
 };
 
